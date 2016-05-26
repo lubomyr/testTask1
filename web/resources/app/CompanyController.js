@@ -1,4 +1,4 @@
-mainModule.controller('CompanyController', ['$scope', '$modal' ,'CompanyService', function ($scope, $modal, companyService) {
+mainModule.controller('CompanyController', ['$scope', 'CompanyService', function ($scope, companyService) {
     $scope.companies = [];
     $scope.rootCompanies = [];
     $scope.companiesWithChildren = [];
