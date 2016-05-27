@@ -48,13 +48,13 @@ public class CompanyController {
         companyService.addCompany(company);
     }
 
-    @RequestMapping(value = "/updateCompany/{company}")
-    public void updateCompany(@PathVariable Company company) {
+    @RequestMapping(value = "/updateCompany")
+    public void updateCompany(@RequestBody Company company) {
         companyService.updateCompany(company);
     }
 
-    @RequestMapping(value = "/deleteCompany/{company}")
-    public void deleteCompany(@PathVariable Company company) {
+    @RequestMapping(value = "/deleteCompany")
+    public void deleteCompany(@RequestBody Company company) {
         companyService.deleteCompany(company);
     }
 

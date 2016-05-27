@@ -1,12 +1,15 @@
 mainModule.controller('AddingNewCompanyModalController', ['$scope', '$uibModalInstance',
     function($scope, $uibModalInstance) {
+
         $scope.formData = {};
 
-        $scope.add = function() {
+        $scope.formData.parent = company;
+
+        $scope.add = function () {
             $uibModalInstance.close($scope.formData);
         };
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
 }]);

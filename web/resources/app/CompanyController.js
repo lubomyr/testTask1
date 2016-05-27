@@ -84,7 +84,6 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
         $scope.animationsEnabled = true;
 
         $scope.addCompanyModal = function (company) {
-            console.log("add Company :" + company);
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'resources/app/modal/new-company.html',
@@ -119,9 +118,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
                     $scope.formData = {};
 
                     $scope.show = function () {
-                        console.log(company);
-                        $scope.formData.companyName = company.name;
-                        $scope.formData.estimateEarnings = company.estimateEarnings;
+                        $scope.formData = company;
                     };
 
                     $scope.show();
@@ -137,8 +134,9 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
                 size: 'lg'
             });
 
-            modalInstance.result.then(function (selectedItem) {
-                console.log(selectedItem);
+            modalInstance.result.then(function (result) {
+                console.log(result);
+                $scope.updateCompany(result);
             });
 
         };
@@ -160,9 +158,37 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             });
         };
 
+        $scope.deleteCompanyModal = function (company) {
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'resources/app/modal/delete-alert.html',
+                controller: function ($uibModalInstance, $scope) {
+
+                    $scope.delData = company;
+
+
+                    $scope.delete = function () {
+                        $uibModalInstance.close($scope.delData);
+                    };
+
+                    $scope.cancel = function () {
+                        $uibModalInstance.dismiss('cancel');
+                    };
+                },
+                size: 'lg'
+            });
+
+            modalInstance.result.then(function (result) {
+                console.log(result);
+                $scope.deleteCompany(result);
+            });
+        };
+
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
+
+
 
     }
 ]);

@@ -46,7 +46,7 @@ mainModule.service('CompanyService', ['$http', '$log', function ($http, $log) {
             },
 
             updateCompany: function(company) {
-                return $http.get('/updateCompany/' + company)
+                return $http.post('/updateCompany',company)
                     .success(function (data) {
                         return data;
                     })
@@ -56,7 +56,7 @@ mainModule.service('CompanyService', ['$http', '$log', function ($http, $log) {
             },
 
             deleteCompany: function(company) {
-                return $http.get('/deleteCompany/' + company)
+                return $http.post('/deleteCompany', company)
                     .success(function (data) {
                         return data;
                     })
