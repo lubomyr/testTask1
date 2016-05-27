@@ -36,7 +36,7 @@ mainModule.service('CompanyService', ['$http', '$log', function ($http, $log) {
             },
 
             addNewCompany: function(company) {
-                return $http.get('/addNewCompany/' + company)
+                return $http.post('/addNewCompany',company)
                     .success(function (data) {
                         return data;
                     })

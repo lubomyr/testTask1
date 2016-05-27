@@ -1,15 +1,10 @@
-var mainModule = angular.module('mainModule', ['ngRoute', 'ngCookies']);
-
-mainModule.config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider.
-            when('/company', {
-                templateUrl: 'resources/app/home.html',
-                controller: 'CompanyController'
-            })
-    }]);
+var mainModule = angular.module('mainModule', ['ui.bootstrap']);
 
 define([
     'resources/app/CompanyService',
-    'resources/app/CompanyController'
+    'resources/app/CompanyController',
+    'resources/app/modal/AddingNewCompanyModalController',
+    'resources/app/modal/EditCompanyModalController'
+//    'resources/app/modal/ViewCompanyModalController',
+//    'resources/app/modal/DeleteCompanyModalController'
 ]);

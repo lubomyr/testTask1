@@ -1,0 +1,45 @@
+<div>
+
+<table class="table table-striped table-bordered">
+
+    <thead>
+    <tr>
+        <th colspan="2" class="text-center text-info">Company Information</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <th>Company name</th>
+        <th>{{info.name}}</th>
+    </tr>
+
+    <tr>
+        <th>Estimate earnings</th>
+        <th>{{info.estimateEarnings}}</th>
+    </tr>
+
+    <tr ng-show="info.estimateEarnings != info.totalEarnings">
+        <th>Total earnings</th>
+        <th>{{info.totalEarnings}}</th>
+    </tr>
+
+    <tr ng-show="info.children != ''">
+        <th>Children companies</th>
+        <th>
+            <script type="text/ng-template" id="childrencompanies_tree.html">
+            {{children.name}}
+            </script>
+            <ul>
+                <li ng-repeat="children in childCompanies" ng-include="'childrencompanies_tree.html'"></li>
+            </ul>
+        </th>
+    </tr>
+
+    </tr>
+    </tbody>
+</table>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="close()">Close</button>
+    </div>
+</div>

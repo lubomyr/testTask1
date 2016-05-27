@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import java.util.List;
-
 @EnableWebMvc
 @RestController
 public class CompanyController {
@@ -45,8 +43,8 @@ public class CompanyController {
         return jsonFilter.processObject(companyService.getCompaniesWithParent(companyId), "children");
     }
 
-    @RequestMapping(value = "/addNewCompany/{company}")
-    public void addNewCompany(@PathVariable Company company) {
+    @RequestMapping(value = "/addNewCompany")
+    public void addCompany(@RequestBody Company company) {
         companyService.addCompany(company);
     }
 
