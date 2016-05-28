@@ -49,8 +49,12 @@ public class CompanyController {
     }
 
     @RequestMapping(value = "/updateCompany")
-    public void updateCompany(@RequestBody Company company) {
-        companyService.updateCompany(company);
+    public void updateCompany(@RequestBody Company company) throws JsonProcessingException {
+        int id = company.getId();
+        Company tempCompany = companyService.getCompanyById(id);
+        tempCompany.setName(company.getName());
+        tempCompany.setEstimateEarnings(company.getEstimateEarnings());
+        companyService.updateCompany(tempCompany);
     }
 
     @RequestMapping(value = "/deleteCompany")

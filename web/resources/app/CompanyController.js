@@ -106,6 +106,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             modalInstance.result.then(function (result) {
                 console.log(result);
                 $scope.addNewCompany(result)
+                $scope.reload();
             });
 
         };
@@ -137,6 +138,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             modalInstance.result.then(function (result) {
                 console.log(result);
                 $scope.updateCompany(result);
+                $scope.reload();
             });
 
         };
@@ -181,6 +183,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             modalInstance.result.then(function (result) {
                 console.log(result);
                 $scope.deleteCompany(result);
+                $scope.reload();
             });
         };
 
