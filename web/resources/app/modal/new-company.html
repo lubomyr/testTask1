@@ -21,7 +21,9 @@
                 <div class="col-md-8 form-group" >
                     <input id="estimateEarnings" name="estimateEarnings" class="form-control"
                            ng-model="formData.estimateEarnings"
-                            >
+                           ng-change="checkAll('estimateEarnings')">
+
+                    <p class="validation-message" ng-show="estimateEarningsValidation.isValid">Enter numbers</p>
                 </div>
             </div>
     <div class="modal-footer">

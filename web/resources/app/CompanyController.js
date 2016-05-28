@@ -17,7 +17,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             });
         };
 
-        //$scope.getAllCompanies();
+        $scope.getAllCompanies();
 
         $scope.getCompanyById = function (companyId) {
             companyService.getListAllChannelsById(companyId).then(function (data) {

@@ -1,29 +1,31 @@
-<div >
+<div>
 
     <h1 class="text-center text-info">Edit company</h1>
 
-            <div class="form-group">
-                <div class="col-md-4 form-group">
-                    <label for="name">
-                        Enter Company name</label>
-                </div>
-                <div class="col-md-8 form-group" >
-                    <input id="name" name="name" class="form-control"
-                           ng-model="formData.name"
-                           >
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-4 form-group">
-                    <label for="estimateEarnings">
-                        Enter estimate earnings </label>
-                </div>
-                <div class="col-md-8 form-group" >
-                    <input id="estimateEarnings" name="estimateEarnings" class="form-control"
-                           ng-model="formData.estimateEarnings"
-                            >
-                </div>
-            </div>
+    <div class="form-group">
+        <div class="col-md-4 form-group">
+            <label for="name">
+                Enter Company name</label>
+        </div>
+        <div class="col-md-8 form-group">
+            <input id="name" name="name" class="form-control"
+                   ng-model="formData.name"
+                    >
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4 form-group">
+            <label for="estimateEarnings">
+                Enter estimate earnings </label>
+        </div>
+        <div class="col-md-8 form-group">
+            <input id="estimateEarnings" name="estimateEarnings" class="form-control"
+                   ng-model="formData.estimateEarnings"
+                   ng-change="checkAll('estimateEarnings')">
+
+            <p class="validation-message" ng-show="estimateEarningsValidation.isValid">Enter numbers</p>
+        </div>
+    </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="edit()">Edit</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>

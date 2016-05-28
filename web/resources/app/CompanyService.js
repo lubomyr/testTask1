@@ -56,7 +56,7 @@ mainModule.service('CompanyService', ['$http', '$log', function ($http, $log) {
             },
 
             deleteCompany: function(company) {
-                return $http.post('/deleteCompany', company)
+                return $http.put('/deleteCompany', company)
                     .success(function (data) {
                         return data;
                     })
