@@ -4,7 +4,10 @@ import atua.anddev.testtask1.entity.Company;
 import atua.anddev.testtask1.service.CompanyService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
@@ -33,12 +36,12 @@ public class CompanyController {
         return jsonFilter.processObject(companyService.getRootCompanies(), "parent");
     }
 
-    @RequestMapping(value = "/getCompanyWithChildren/{companyId}")
+    @RequestMapping(value = "/getCompaniesWithChildren/{companyId}")
     public String getCompanyWithChildren(@PathVariable int companyId) throws JsonProcessingException {
         return jsonFilter.processObject(companyService.getCompaniesWithChildren(companyId), "parent");
     }
 
-    @RequestMapping(value = "/getCompanyWithParent/{companyId}")
+    @RequestMapping(value = "/getCompaniesWithParent/{companyId}")
     public String getCompanyWithParent(@PathVariable int companyId) throws JsonProcessingException {
         return jsonFilter.processObject(companyService.getCompaniesWithParent(companyId), "children");
     }
@@ -49,12 +52,8 @@ public class CompanyController {
     }
 
     @RequestMapping(value = "/updateCompany")
-    public void updateCompany(@RequestBody Company company) throws JsonProcessingException {
-        int id = company.getId();
-        Company tempCompany = companyService.getCompanyById(id);
-        tempCompany.setName(company.getName());
-        tempCompany.setEstimateEarnings(company.getEstimateEarnings());
-        companyService.updateCompany(tempCompany);
+    public void updateCompany(@RequestBody Company company) {
+        companyService.updateCompany(company);
     }
 
     @RequestMapping(value = "/deleteCompany")

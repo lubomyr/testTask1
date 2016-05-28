@@ -1,6 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      id="mainModule">
+        >
 <head>
     <title>Home</title>
     <meta charset="utf-8">
@@ -18,7 +17,7 @@
         }
     </style>
 </head>
-<body>
+<body id="mainModule">
 
 <div class="row" ng-controller="CompanyController" ng-model="company">
     <a type="button" class="btn btn-primary btn-sm grpbtn" ng-click="addCompanyModal(null)">Add new Company</a>

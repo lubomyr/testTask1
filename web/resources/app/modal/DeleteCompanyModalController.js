@@ -1,8 +1,7 @@
-mainModule.controller('DeleteCompanyModalController', ['$scope', '$uibModalInstance',
-    function ($scope, $uibModalInstance) {
+mainModule.controller('DeleteCompanyModalController', ['$scope', '$uibModalInstance', 'companyData',
+    function ($scope, $uibModalInstance, companyData) {
 
-        $scope.delData = company;
-
+        $scope.delData = companyData;
 
         $scope.delete = function () {
             $uibModalInstance.close($scope.delData);

@@ -1,15 +1,16 @@
-mainModule.controller('EditCompanyModalController', ['$scope', '$uibModalInstance',
-    function($scope, $uibModalInstance) {
+mainModule.controller('EditCompanyModalController', ['$scope', '$uibModalInstance', 'companyData', 'parentData',
+    function ($scope, $uibModalInstance, companyData, parentData) {
 
         $scope.formData = {};
 
         $scope.show = function () {
-            $scope.formData.name = company.name;
-            $scope.formData.estimateEarnings = company.estimateEarnings;
-            $scope.formData.children = company.children;
+            $scope.formData = companyData;
         };
 
         $scope.show();
+
+        if (parentData != '')
+            $scope.formData.parent = parentData[0];
 
         $scope.edit = function () {
             $uibModalInstance.close($scope.formData);

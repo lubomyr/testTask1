@@ -24,15 +24,18 @@
         <th>{{info.totalEarnings}}</th>
     </tr>
 
+    <tr ng-show="info.parent != ''">
+        <th>Parent company</th>
+        <th>{{info.parent.name}}</th>
+    </tr>
+
     <tr ng-show="info.children != ''">
         <th>Children companies</th>
         <th>
             <script type="text/ng-template" id="childrencompanies_tree.html">
             {{children.name}}
             </script>
-            <ul>
-                <li ng-repeat="children in childCompanies" ng-include="'childrencompanies_tree.html'"></li>
-            </ul>
+            <p ng-repeat="children in childCompanies" ng-include="'childrencompanies_tree.html'"></p>
         </th>
     </tr>
 

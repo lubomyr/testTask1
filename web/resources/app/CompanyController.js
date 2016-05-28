@@ -17,7 +17,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             });
         };
 
-        $scope.getAllCompanies();
+        //$scope.getAllCompanies();
 
         $scope.getCompanyById = function (companyId) {
             companyService.getListAllChannelsById(companyId).then(function (data) {
@@ -50,9 +50,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             companyService.addNewCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
-
-                    } else {
-
+                        $scope.reload();
                     }
                 });
         };
@@ -62,9 +60,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             companyService.updateCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
-
-                    } else {
-
+                        $scope.reload();
                     }
                 });
         };
@@ -74,9 +70,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             companyService.deleteCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
-
-                    } else {
-
+                        $scope.reload();
                     }
                 });
         };
@@ -87,26 +81,16 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'resources/app/modal/new-company.html',
-                controller: function ($uibModalInstance, $scope) {
-                    $scope.formData = {};
-
-                    $scope.formData.parent = company;
-
-                    $scope.add = function () {
-                        $uibModalInstance.close($scope.formData);
-                    };
-
-                    $scope.cancel = function () {
-                        $uibModalInstance.dismiss('cancel');
-                    };
-                },
-                size: 'lg'
+                controller: 'AddingNewCompanyModalController',
+                size: 'lg',
+                resolve: {
+                    companyData: company
+                }
             });
 
             modalInstance.result.then(function (result) {
                 console.log(result);
-                $scope.addNewCompany(result)
-                $scope.reload();
+                $scope.addNewCompany(result);
             });
 
         };
@@ -115,30 +99,19 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'resources/app/modal/edit-company.html',
-                controller: function ($uibModalInstance, $scope) {
-                    $scope.formData = {};
-
-                    $scope.show = function () {
-                        $scope.formData = company;
-                    };
-
-                    $scope.show();
-
-                    $scope.edit = function () {
-                        $uibModalInstance.close($scope.formData);
-                    };
-
-                    $scope.cancel = function () {
-                        $uibModalInstance.dismiss('cancel');
-                    };
-                },
-                size: 'lg'
+                controller: 'EditCompanyModalController',
+                size: 'lg',
+                resolve: {
+                    companyData: company,
+                    parentData: companyService.getCompaniesWithParent(company.id).then(function (data) {
+                        return data;
+                    })
+                }
             });
 
             modalInstance.result.then(function (result) {
                 console.log(result);
                 $scope.updateCompany(result);
-                $scope.reload();
             });
 
         };
@@ -147,16 +120,14 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'resources/app/modal/view-company.html',
-                controller: function ($uibModalInstance, $scope) {
-
-                    $scope.info = company;
-                    $scope.childCompanies = company.children;
-
-                    $scope.close = function () {
-                        $uibModalInstance.dismiss('cancel');
-                    };
-                },
-                size: 'lg'
+                controller: 'ViewCompanyModalController',
+                size: 'lg',
+                resolve: {
+                    companyData: company,
+                    parentData: companyService.getCompaniesWithParent(company.id).then(function (data) {
+                        return data;
+                    })
+                }
             });
         };
 
@@ -164,34 +135,22 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'resources/app/modal/delete-alert.html',
-                controller: function ($uibModalInstance, $scope) {
-
-                    $scope.delData = company;
-
-
-                    $scope.delete = function () {
-                        $uibModalInstance.close($scope.delData);
-                    };
-
-                    $scope.cancel = function () {
-                        $uibModalInstance.dismiss('cancel');
-                    };
-                },
-                size: 'lg'
+                controller: 'DeleteCompanyModalController',
+                size: 'lg',
+                resolve: {
+                    companyData: company
+                }
             });
 
             modalInstance.result.then(function (result) {
                 console.log(result);
                 $scope.deleteCompany(result);
-                $scope.reload();
             });
         };
 
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
-
-
 
     }
 ]);

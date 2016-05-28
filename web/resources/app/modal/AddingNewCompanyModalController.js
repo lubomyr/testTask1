@@ -1,9 +1,9 @@
-mainModule.controller('AddingNewCompanyModalController', ['$scope', '$uibModalInstance',
-    function($scope, $uibModalInstance) {
+mainModule.controller('AddingNewCompanyModalController', ['$scope', '$uibModalInstance', 'companyData',
+    function ($scope, $uibModalInstance, companyData) {
 
         $scope.formData = {};
 
-        $scope.formData.parent = company;
+        $scope.formData.parent = companyData;
 
         $scope.add = function () {
             $uibModalInstance.close($scope.formData);

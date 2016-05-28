@@ -46,7 +46,7 @@ mainModule.service('CompanyService', ['$http', '$log', function ($http, $log) {
             },
 
             updateCompany: function(company) {
-                return $http.post('/updateCompany',company)
+                return $http.put('/updateCompany', company)
                     .success(function (data) {
                         return data;
                     })
