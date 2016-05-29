@@ -25,11 +25,11 @@
         <tr>
             <td>
                 <script type="text/ng-template" id="companies_tree.html">
-                        {{company.name}}
-                        {{company.estimateEarnings}}
-                        <div class="inline" ng-show="company.estimateEarnings != company.totalEarnings">
-                            {{company.totalEarnings}}
-                        </div>
+                    {{company.name}}
+                    {{company.estimateEarnings}}
+                    <div class="inline" ng-show="company.estimateEarnings != company.totalEarnings">
+                        {{company.totalEarnings}}
+                    </div>
                     </a>
                     <a type="button" class="btn btn-info btn-sm" ng-click="viewCompanyModal(company)">View</a>
                     <a type="button" class="btn btn-success btn-sm" ng-click="editCompanyModal(company)">Edit</a>
