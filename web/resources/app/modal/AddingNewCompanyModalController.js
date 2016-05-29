@@ -3,13 +3,14 @@ mainModule.controller('AddingNewCompanyModalController', ['$scope', '$uibModalIn
 
         $scope.formData = {};
 
+        $scope.formData.parent = {};
+
         function checkParent() {
             if (companyData != null) {
                 companyService.getCompaniesWithParent(companyData.id).then(function (data) {
                     if (data != "") {
                         $scope.formData.parent = companyData;
                         $scope.formData.parent.parent = data[0];
-                        console.log(data.parent);
                     }
                     else {
                         $scope.formData.parent = companyData;
