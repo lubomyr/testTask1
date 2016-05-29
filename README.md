@@ -15,6 +15,7 @@ SetUp for IntelliJ IDEA:
 Open project: testtask1
 
 File -> Project structure
+
 Project:
 project SDK: 1.8,
 project language level: SDK default,
