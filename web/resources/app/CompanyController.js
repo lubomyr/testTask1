@@ -84,7 +84,8 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
                 controller: 'AddingNewCompanyModalController',
                 size: 'lg',
                 resolve: {
-                    companyData: company
+                    companyData: company,
+                    companyService: companyService
                 }
             });
 

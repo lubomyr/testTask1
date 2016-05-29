@@ -1,9 +1,27 @@
-mainModule.controller('AddingNewCompanyModalController', ['$scope', '$uibModalInstance', 'companyData',
-    function ($scope, $uibModalInstance, companyData) {
+mainModule.controller('AddingNewCompanyModalController', ['$scope', '$uibModalInstance', 'companyData', 'companyService',
+    function ($scope, $uibModalInstance, companyData, companyService) {
 
         $scope.formData = {};
 
-        $scope.formData.parent = companyData;
+        function checkParent() {
+            if (companyData != null) {
+                companyService.getCompaniesWithParent(companyData.id).then(function (data) {
+                    if (data != "") {
+                        $scope.formData.parent = companyData;
+                        $scope.formData.parent.parent = data[0];
+                        console.log(data.parent);
+                    }
+                    else {
+                        $scope.formData.parent = companyData;
+                    }
+                })
+            }
+            else {
+                $scope.formData.parent = null;
+            }
+        }
+
+        checkParent();
 
         function isInt(value) {
             return !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
