@@ -3,11 +3,15 @@ mainModule.controller('EditCompanyModalController', ['$scope', '$uibModalInstanc
 
         $scope.formData = {};
 
-        $scope.show = function () {
-            $scope.formData = companyData;
+        show = function () {
+            $scope.formData.id = companyData.id;
+            $scope.formData.name = companyData.name;
+            $scope.formData.estimateEarnings = companyData.estimateEarnings;
+            $scope.formData.totalEarnings = companyData.totalEarnings;
+            $scope.formData.child = companyData.child;
         };
 
-        $scope.show();
+        show();
 
         if (parentData != '')
             $scope.formData.parent = parentData[0];
