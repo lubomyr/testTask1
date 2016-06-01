@@ -24,7 +24,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             companyService.addNewCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
-                        $scope.reload();
+                        $scope.getRootCompanies();
                     }
                 });
         };
@@ -34,7 +34,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             companyService.updateCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
-                        $scope.reload();
+                        $scope.getRootCompanies();
                     }
                 });
         };
@@ -44,7 +44,7 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             companyService.deleteCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
-                        $scope.reload();
+                        $scope.getRootCompanies();
                     }
                 });
         };
