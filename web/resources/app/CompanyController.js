@@ -20,7 +20,6 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
         $scope.getRootCompanies();
 
         $scope.addNewCompany = function (company) {
-            console.log("add new Company :" + company);
             companyService.addNewCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
@@ -30,7 +29,6 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
         };
 
         $scope.updateCompany = function (company) {
-            console.log("update Company :" + company);
             companyService.updateCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
@@ -40,7 +38,6 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
         };
 
         $scope.deleteCompany = function (company) {
-            console.log("delete Company :" + company);
             companyService.deleteCompany(company)
                 .then(function (response) {
                     if (response.status == 200) {
@@ -64,7 +61,6 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             });
 
             modalInstance.result.then(function (result) {
-                console.log(result);
                 $scope.addNewCompany(result);
             });
 
@@ -85,7 +81,6 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             });
 
             modalInstance.result.then(function (result) {
-                console.log(result);
                 $scope.updateCompany(result);
             });
 
@@ -118,7 +113,6 @@ mainModule.controller('CompanyController', ['$scope', '$uibModal', 'CompanyServi
             });
 
             modalInstance.result.then(function (result) {
-                console.log(result);
                 $scope.deleteCompany(result);
             });
         };
