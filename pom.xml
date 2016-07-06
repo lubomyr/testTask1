@@ -7,11 +7,13 @@
     <groupId>testTask1</groupId>
     <artifactId>testTask1</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <properties>
-        <springframework-version>4.2.4.RELEASE</springframework-version>
+        <java-version>1.8</java-version>
+        <springframework-version>4.2.5.RELEASE</springframework-version>
         <hibernate-version>5.1.0.Final</hibernate-version>
-        <mysql-connector-version>5.1.38</mysql-connector-version>
-        <jackson-version>2.6.5</jackson-version>
+        <mysql-connector-version>5.1.39</mysql-connector-version>
+        <jackson-version>2.7.4</jackson-version>
     </properties>
     <dependencies>
         <!--  Spring Framework  -->
@@ -47,6 +49,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -72,7 +75,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>3.8.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -81,5 +84,36 @@
             <version>1.16.6</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
+    <build>
+        <finalName>testTask1</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <ignorePackaging>true</ignorePackaging>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
 </project>
