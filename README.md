@@ -51,4 +51,4 @@ SOURCE ~/workspace/testTask1/db_script.sql;
 
 project temporary deployed at URL: 
 
-http://31.179.151.210:21025/
+http://31.179.151.210:21025/testTask1/
