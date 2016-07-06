@@ -8,9 +8,31 @@ mysql-server
 maven
 tomcat7
 Java SDK 1.8
-IntelliJ IDEA
+(setup) IntelliJ IDEA
 
-SetUp for IntelliJ IDEA:
+How to build. Main steps
+
+We need console for some actions:
+
+bower install
+
+// create Database: mysql -p -uroot
+
+CREATE DATABASE testtask1 CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+// build and run project (via maven)
+
+mvn clean install tomcat7:run-war
+
+// then you can run db_script.sql script
+
+USE testtask1;
+
+SOURCE ~/workspace/testTask1/db_script.sql;
+
+
+
+- SetUp for IntelliJ IDEA:
 
 Open project: testtask1
 
@@ -33,22 +55,7 @@ Server -> ApplicationServer: Tomcat 8.x
 Deployment -> Add(+) 'testTask1:war exploded'
 
 
-Before run via console you need to do some Actions:
 
-bower install
-
-// create Database: mysql -p -uroot )
-
-CREATE DATABASE testtask1 CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
-// Run project and wait when you will see button 'Add new Company'
-
-// then you can run db_script.sql script
-
-USE testtask1;
-
-SOURCE ~/workspace/testTask1/db_script.sql;
-
-project temporary deployed at URL: 
+project temporary deployed at URL:
 
 http://31.179.151.210:21025/testTask1/
